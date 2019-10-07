@@ -1,0 +1,25 @@
+/*cometarios*/
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    background: deepskyblue;
+    color: white;
+}
+h1{
+    position: relative;
+    left: 150px;
+}
+hr{
+    color: #00Afff;
+}
+main, footer, form{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+#img{
+    position: relative;
+    left: 200px;
+}

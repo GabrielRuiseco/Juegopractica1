@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="Simple hangman game made in html whit css and javascript for praticate at the technological university of torreon">
+    <meta name="keywords" content="">
     <meta charset="UTF-8">
     <title>JUEGOPRACTICA1</title>
     <link rel="stylesheet" href="css/style.css">
@@ -12,9 +14,29 @@
 
 <header>
     <h1>JUEGO DEL AHORCADO</h1>
-    <h3>Ninguna pesona fue lastimada en este juego</h3>
-    <hr>
 </header>
+<hr>
+<section class="wrapper">
+    <section class="main">
+        <article>
+            <div id="img"><img src="img/icono.jpg" alt="Imagen Ahorcado" title="Imagen Ahorcado"  height="233" width="260"/></div>
+            <form action="">
+                <labe for="l_in">Adivina una letra</labe>
+                <input type="text" placeholder="Escribe una letra" maxlength="1" name="Letra_entrante" id="l_in">
+                <input type="submit" value="Ingresar">
+                <div><input type="button" value="Reiniciar"></div>
+            </form>
+        </article>
+    <aside></aside>
+    </section>
+</section>
+
+<footer>
+    <a target="_blank" href="juegoahorcado.html">Gabogames</a>
+    <p>Gabriel Alejandro Ruiseco cisneros - Universidad Tecnologica De Torreon 2019</p>
+</footer>
+
+
 
 <!--<nav>-- esta etiqueta sirve para que el navegador identifique
     --<ul>--
@@ -23,16 +45,5 @@
     --</ul>--
 --</nav>-->
 
-
-<div><img src="img/icono.jpg" alt="Imagen Ahorcado" title="Imagen Ahorcado"  height="233" width="260"/></div>
-<div>
-    <form action="">
-        <labe for="l_in">Adivina una letra</labe>
-        <input type="text" placeholder="Escribe una letra" maxlength="1" name="Letra_entrante" id="l_in">
-        <input type="submit" value="Ingresar">
-        <div><input type="button" value="Reiniciar"></div>
-    </form>
-</div>
-<div><a target="_blank" href="juegoahorcado.html">Gabogames</a></div>
 </body>
 </html>
