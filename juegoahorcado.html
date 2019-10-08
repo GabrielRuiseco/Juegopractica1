@@ -10,8 +10,6 @@
 </head>
 <body>
 
-<script src="juegoahorcado.html"></script>
-
 <header>
     <h1>JUEGO DEL AHORCADO</h1>
 </header>
@@ -20,10 +18,12 @@
     <section class="main">
         <article>
             <div id="img"><img src="img/icono.jpg" alt="Imagen Ahorcado" title="Imagen Ahorcado"  height="233" width="260"/></div>
+            <div id="letras"> <hr><h3>_ _ _ _ _ _ _ _ _ _ _</h3><hr></div>
             <form action="">
                 <labe for="l_in">Adivina una letra</labe>
                 <input type="text" placeholder="Escribe una letra" maxlength="1" name="Letra_entrante" id="l_in">
-                <input type="submit" value="Ingresar">
+                <input type="submit" value="Ingresar" onclick="ingresarletra()">
+                <div id="errores"> <strong>Errores: </strong> <span id="leterror">6</span></div>
                 <div><input type="button" value="Reiniciar"></div>
             </form>
         </article>
@@ -38,12 +38,71 @@
 
 
 
-<!--<nav>-- esta etiqueta sirve para que el navegador identifique
-    --<ul>--
-      --<li>1</li>--
+<!--<nav>-- esta etiqueta sirve para que el navegador identifique que tienes un menu
+    --<ul>-- este se usa para listas desordenadas
+      --<li>1</li>-- son los elementos de las listass
         --<li>2</li>--
     --</ul>--
 --</nav>-->
+
+<script type="text/javascript">
+    var palabras=[["palabra"],["raton"],["teclado"],["computadora"],["pantalla"],["programa"],["consola"],["aplicacion"],["base"],["dato"]];
+    var respuesta=[];
+    var letraserroneas=[];
+    var intentosrestantes=6;
+    var usersguesses=[];
+    var palabra;
+    var aciertos=0;
+
+    function iniciar()
+    {
+        var palabra= palabras[Math.floor(Math.random()*palabras.length)];
+
+        for(var i=0;i<palabra.length;i++)
+        {
+            respuesta.push('_');
+        }
+        document.getElementById('letras').textContent=respuesta.join(" ");
+        letraserroneas=[];
+        intentosrestantes=6;
+
+        document.getElementById("leterror").textContent=intentosrestantes;
+    }
+
+    function win()
+    {
+        if(aciertos===palabra.length)
+        {
+            alert("GANASTE!");
+        }
+        else if (intentosrestantes===0)
+        {
+            alert("Perdiste")
+            iniciar();
+        }
+    }
+
+    document.onkeyup=function (event) {
+        usersguesses = event.key;
+        if (palabra.indexOf(usersguesses)>-1)
+        {
+            for(var i=0;i<palabra.length;i++)
+            {
+                if(palabra[i]===usersguesses)
+                {
+                    respuesta[i]= usersguesses;
+                    aciertos++;
+                }
+            }
+        }
+        else
+        {
+            letraserroneas.push(usersguesses);
+            intentosrestantes--;
+        }
+    }
+    iniciar();
+</script>
 
 </body>
 </html>

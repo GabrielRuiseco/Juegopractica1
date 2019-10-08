@@ -14,7 +14,7 @@ h1{
 hr{
     color: #00Afff;
 }
-main, footer, form{
+main, footer, form, h3{
     width: 90%;
     max-width: 1000px;
     margin: auto;
