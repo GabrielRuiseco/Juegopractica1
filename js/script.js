@@ -1,57 +1,58 @@
-var palabras=[[palabra],[raton],[teclado],[computadora],[pantalla],[programa],[consola],[aplicacion],[base],[dato]];
+var palabras=['palabra','raton','teclado','computadora','pantalla','programa','consola','aplicacion','base','dato'];
 var respuesta=[];
-var letraserroneas=[];
 var intentosrestantes=6;
-var usersguesses=[];
 var palabra;
 var aciertos=0;
-
-function iniciar()
+var letra;
+$(document).ready(function iniciar()
 {
     var palabra= palabras[Math.floor(Math.random()*palabras.length)];
-
     for(var i=0;i<palabra.length;i++)
     {
         respuesta.push('_');
     }
-    document.getElementById('letras').textContent=respuesta.join(" ");
-    letraserroneas=[];
+    $('#espacios').append(respuesta.join(" "));
     intentosrestantes=6;
-
     document.getElementById("leterror").textContent=intentosrestantes;
-}
 
-function win()
-{
-    if(aciertos===palabra.length)
-    {
-        alert("GANASTE!");
-    }
-    else if (intentosrestantes===0)
-    {
-        alert("Perdiste")
-        iniciar();
-    }
-}
-
-document.onkeyup=function (event) {
-    usersguesses = event.key;
-    if (palabra.indexOf(usersguesses)>-1)
-    {
-        for(var i=0;i<palabra.length;i++)
+    console.log(respuesta);
+    console.log(palabra)
+    $("#btn1").click(function guardar() {
+        letra=$("#l_in").val();
+        console.log(letra);
+        if(palabra.indexOf(letra)>-1)
         {
-            if(palabra[i]===usersguesses)
+            for(var j=0;j<palabra.length;j++)
             {
-                respuesta[i]= usersguesses;
-                aciertos++;
+                if (respuesta[j]===letra)
+                {
+                    break;
+                }
+                else
+                {
+                    if (palabra[j]===letra){
+                        respuesta[j]=letra;
+                        aciertos++;
+                        document.getElementById("espacios").textContent=respuesta.join(" ");
+                    }
+                }
             }
         }
-    }
-    else
-        {
-            letraserroneas.push(usersguesses);
+        else{
             intentosrestantes--;
+            document.getElementById("leterror").textContent=intentosrestantes;
         }
+        if(aciertos===palabra.length)
+        {
+            alert("GANASTE!");
+            $("#btn1").prop('disabled',true);
 
-}
-iniciar();
+        }
+        else if (intentosrestantes===0)
+        {
+            alert("Perdiste");
+            $("#btn1").prop('disabled',true);
+        }
+        $("#l_in").val("");
+    });
+});
